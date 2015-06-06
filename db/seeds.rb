@@ -10,3 +10,5 @@
 Product.delete_all
 
 Product.create!(title: 'Agile Web Development in Rails 4', description: %{Learn Ruby on Rails Fast!}, image_url: 'ruby.jpg', price: 49.95)
+
+Product.create!(title: 'Eloquent Ruby', description: %{Learn how to code in Ruby in a beautiful way}, image_url: 'ruby.jpg', price: 55.95)

@@ -2,13 +2,30 @@
 <html>
 <head>
   <title>Depot</title>
+  <!-- link to our stylesheets: -->
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <!-- link to our scripts: -->
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <!-- helps prevent cross-site request forgery attacks from our forms -->
   <%= csrf_meta_tags %>
 </head>
 <body class= '<%= controller.controller_name %>'>
-
-<%= yield %>
-
+	<div id="banner">
+		<%= image_tag("logo.png") %>
+		<%= @page_title || "Pragmatic Bookshelf" %>
+	</div>
+	<div id="columns">
+		<div id="side">
+			<ul>
+				<li><a href="#">Home</a></li>
+				<li><a href="#">Questions</a></li>
+				<li><a href="#">News</a></li>
+				<li><a href="#">Contact</a></li>
+			</ul>
+		</div>
+		<div>
+			<%= yield %>
+		</div>
+	</div>
 </body>
 </html>

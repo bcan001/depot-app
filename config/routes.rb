@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
 
-  root 'products#index'
+  get 'store/index'
+
+  # root 'products#index'
+
+  # can use store_path now in views / controllers
+  root 'store#index', as: 'store'
 
   resources :products
 
