@@ -1,4 +1,6 @@
 module CurrentCart
+	# Basically, the idea is to extract common and / or context specific chunks of code in order to clean up the models and avoid them getting too fat and messy.
+	# This module can be added to any class to share its functionality
 	extend ActiveSupport::Concern
 
 	private
@@ -10,3 +12,6 @@ module CurrentCart
 		end
 
 end
+
+
+
