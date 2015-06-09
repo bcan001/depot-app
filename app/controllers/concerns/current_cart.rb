@@ -6,7 +6,7 @@ module CurrentCart
 	private
 		def set_cart
 			@cart = Cart.find(session[:cart_id])
-		rescue ActiveRecord::RecordNotFound
+		rescue ActiveRecord::RecordNotFound # use rescue to catch an error, in case a cart does not exist yet
 			@cart = Cart.create
 			session[:cart_id] = @cart.id
 		end
