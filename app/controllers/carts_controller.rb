@@ -1,5 +1,12 @@
 class CartsController < ApplicationController
+  # each person will have their own cart to store the items they want to purchase
+
+  # set_cart is a private method in this controller
   before_action :set_cart, only: [:show, :edit, :update, :destroy]
+
+  # invalid_cart is a private method in this controller
+  # rescue_from intercepts the exception raised by Cart.find()
+  rescue_from ActiveRecord::RecordNotFound, with: :invalid_cart
 
   # GET /carts
   # GET /carts.json
@@ -70,5 +77,10 @@ class CartsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def cart_params
       params[:cart]
+    end
+
+    def invalid_cart
+      logger.error("Attempt to access invalid cart #{params[:id]}")
+      redirect_to store_url, notice: "Invalid Cart"
     end
 end

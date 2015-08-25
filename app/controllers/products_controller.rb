@@ -1,4 +1,6 @@
 class ProductsController < ApplicationController
+  # for creating and editing products (books, etc.)
+
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   # GET /products

@@ -1,8 +1,10 @@
 class LineItemsController < ApplicationController
+  # for combining multiples of the same item into one bucket in each cart
+
   # use our concern to find OR create a cart in the session
   include CurrentCart
-  before_action :set_cart, only: [:create]
 
+  before_action :set_cart, only: [:create]
   before_action :set_line_item, only: [:show, :edit, :update, :destroy]
 
   # GET /line_items
@@ -75,7 +77,13 @@ class LineItemsController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
+    # remove cart_id from allowed parameters so other people cannot access each others carts
     def line_item_params
-      params.require(:line_item).permit(:product_id, :cart_id)
+      # params.require(:line_item).permit(:product_id, :cart_id)
+      params.require(:line_item).permit(:product_id)
     end
 end
+
+
+
+
